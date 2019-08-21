@@ -12,7 +12,7 @@
 // Principle 1
 function greetMe(name) {
   console.log('hello ' + name);
-  // console.log(this);
+  console.log(this);
 }
 greetMe(`Jordan`);
 // code example for Window Binding
