@@ -4,7 +4,7 @@
 * 1. when functions are contained in the global scope, the value of "this" inside of that function will be the window object.
 * 2. when dot notation invokes a function.
 * 3. when a constructor function is used, "this" refers to the specific object that is created and returned by the constructor function.
-* 4. Whenever JavaScript's call or apply method is used, "this" is defined.
+* 4. We can explicitly tell the JavaScript engine to point to a certain value using call, apply or bind.
 *
 * write out a code example of each explanation above
 */
