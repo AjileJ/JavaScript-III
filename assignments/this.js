@@ -9,43 +9,63 @@
 * write out a code example of each explanation above
 */
 
-// Principle 1
+
+// Principle 1  //  Window/Global Object Binding //
+//1. when functions are contained in the global scope, the value of "this" inside of that function will be the window object.//
+
 function greetMe(name) {
-  console.log('hello ' + name);
+  console.log(`hello  ${name}`);
   console.log(this);
 }
 greetMe(`Jordan`);
-// code example for Window Binding
 
-// Principle 2
+
+
+
+// Principle 2  //  Implicit Binding //
+//2. Whenever a function is called by a preceding dot, the object before that dot is this.//
 
  let myImp = {
    name:'Jordans implicit',
+   singleName:'Jordan',
    age:22,
-   favColor: 'black and blue',
+   favColor: 'black and blue!!',
    imp: function(){
-     console.log(this.name);
+     console.log(`${this.name} is soooo good. ${this.singleName} is ${this.age}, and his favorite colors are ${this.favColor}`);
    }
  }
  myImp.imp();
-// code example for Implicit Binding
 
-// Principle 3
 
-function Saying(say){
-  this.thing = say;
+
+// Principle 3// New binding //
+//3. Whenever a constructor function is used, this refers to the specific instance of the object that is created and returned by the constructor function.//
+
+function CordialPerson(greeting,greeter) {
+  this.greeting = greeting;
+  this.greeter = greeter;
+  this.speak = function() {
+    console.log(this.greeting + this.greeter);
+    console.log(this);
+  };
 }
-let mySaying = new Saying('life is like a box of chocolate');
-console.log(mySaying.thing);
-// code example for New Binding
 
-// Principle 4
+const jerry = new CordialPerson('Yo!!','Jordan, its lyle!!');
+const newman = new CordialPerson('Ayy!!','Edmin');
+const lyle = new CordialPerson('Hey there lyle ', 'do you want a doggy treat?');
+
+jerry.speak();
+// newman.speak();
+lyle.speak();
+
+// Principle 4 // Explicit binding //
+//4. Whenever JavaScript’s call or apply method is used, this is explicitly defined.//
+
 function donated(){
- console.log(this.donated);
+ console.log(this.donated); // grabbed from call(donation)//
 }
 let donation ={
   name:'lyle',
   donated: 40000,
 }
-donated.call(donation);
-// code example for Explicit Binding
+donated.call(donation); // call is grabbing the object from donation and putting it in the "donated()" function so that it can use this.donated without being in the same scope.//
